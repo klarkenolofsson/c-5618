@@ -1,4 +1,4 @@
-import { ImagePlus, FileText, BarChart2, Code, HelpCircle } from "lucide-react";
+import { ImagePlus, FileText, BarChart2, Code, HelpCircle, Video } from "lucide-react";
 
 const ActionButtons = () => {
   const actions = [
@@ -7,6 +7,7 @@ const ActionButtons = () => {
     { icon: <BarChart2 className="h-4 w-4 text-green-400" />, label: "Analyze data" },
     { icon: <Code className="h-4 w-4 text-yellow-400" />, label: "Code" },
     { icon: <HelpCircle className="h-4 w-4 text-red-400" />, label: "Get advice" },
+    { icon: <Video className="h-4 w-4 text-pink-400" />, label: "Live support" },
   ];
 
   return (
