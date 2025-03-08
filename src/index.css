@@ -1,15 +1,46 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply bg-chatgpt-main text-white;
+@layer base {
+  :root {
+    --background: 258 54% 98%;
+    --foreground: 258 30% 15%;
+    --border: 258 30% 90%;
+    --input: 258 30% 90%;
+    --ring: 258 91% 75%;
+    --radius: 1rem;
+  }
+
+  body {
+    @apply bg-happy-light text-happy-dark;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
 }
 
-.sidebar-item {
-  @apply flex items-center gap-3 rounded-md px-3 py-3 text-sm transition-colors duration-200 hover:bg-chatgpt-hover cursor-pointer;
-}
+@layer components {
+  .sidebar-item {
+    @apply flex items-center gap-3 rounded-md px-3 py-3 text-sm transition-colors duration-200 hover:bg-white/60 cursor-pointer;
+  }
 
-.action-button {
-  @apply flex items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-chatgpt-hover/50 border border-transparent hover:border-chatgpt-border transition-all duration-200;
+  .action-button {
+    @apply flex items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-white/50 border border-transparent hover:border-happy-primary/30 transition-all duration-200;
+  }
+  
+  .happy-card {
+    @apply bg-white/70 backdrop-blur-sm border border-happy-primary/20 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300;
+  }
+  
+  .trust-badge {
+    @apply inline-flex items-center rounded-full bg-gradient-trust px-2.5 py-0.5 text-xs font-medium text-happy-dark transition-transform hover:scale-105;
+  }
+  
+  .input-field {
+    @apply bg-white/50 backdrop-blur-sm border border-happy-primary/20 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-happy-primary/50 transition-all duration-200;
+  }
+  
+  .glass-morphism {
+    @apply bg-white/40 backdrop-blur-lg border border-white/30 shadow-sm rounded-xl;
+  }
 }

@@ -1,5 +1,7 @@
+
 import { useState } from "react";
-import { ArrowUp, Loader2 } from "lucide-react";
+import { ArrowUp, Loader2, Mic, PaperClip, Lock, Image } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface ChatInputProps {
   onSend: (message: string) => void;
@@ -8,6 +10,7 @@ interface ChatInputProps {
 
 const ChatInput = ({ onSend, isLoading = false }: ChatInputProps) => {
   const [message, setMessage] = useState("");
+  const [isRecording, setIsRecording] = useState(false);
 
   const handleSubmit = () => {
     if (message.trim() && !isLoading) {
@@ -23,30 +26,71 @@ const ChatInput = ({ onSend, isLoading = false }: ChatInputProps) => {
     }
   };
 
+  const toggleRecording = () => {
+    setIsRecording(!isRecording);
+  };
+
   return (
     <div className="relative flex w-full flex-col items-center">
       <div className="relative w-full">
-        <textarea
-          rows={1}
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          onKeyDown={handleKeyDown}
-          placeholder="Message Claude"
-          className="w-full resize-none rounded-full bg-[#2F2F2F] px-4 py-4 pr-12 focus:outline-none"
-          style={{ maxHeight: "200px" }}
-          disabled={isLoading}
-        />
-        <button 
-          onClick={handleSubmit}
-          disabled={isLoading || !message.trim()}
-          className="absolute right-3 top-[50%] -translate-y-[50%] p-1.5 bg-white rounded-full hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          {isLoading ? (
-            <Loader2 className="h-4 w-4 text-black animate-spin" />
-          ) : (
-            <ArrowUp className="h-4 w-4 text-black" />
-          )}
-        </button>
+        <div className="glass-morphism flex items-center pr-2">
+          <textarea
+            rows={1}
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            onKeyDown={handleKeyDown}
+            placeholder="Message Happy AI..."
+            className="w-full resize-none bg-transparent px-4 py-4 pr-24 focus:outline-none"
+            style={{ maxHeight: "200px" }}
+            disabled={isLoading}
+          />
+          <div className="flex items-center gap-2">
+            <motion.button 
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              className="p-2 rounded-full hover:bg-happy-primary/10 text-happy-dark/70 transition-colors"
+            >
+              <PaperClip className="h-5 w-5" />
+            </motion.button>
+            
+            <motion.button 
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              className="p-2 rounded-full hover:bg-happy-primary/10 text-happy-dark/70 transition-colors"
+            >
+              <Image className="h-5 w-5" />
+            </motion.button>
+            
+            <motion.button 
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={toggleRecording}
+              className={`p-2 rounded-full transition-colors ${isRecording ? 'bg-red-400 text-white animate-pulse' : 'hover:bg-happy-primary/10 text-happy-dark/70'}`}
+            >
+              <Mic className="h-5 w-5" />
+            </motion.button>
+            
+            <motion.button 
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={handleSubmit}
+              disabled={isLoading || !message.trim()}
+              className="ml-1 p-2.5 bg-gradient-to-r from-happy-primary to-happy-secondary rounded-full text-white disabled:opacity-50 disabled:cursor-not-allowed shadow-sm"
+            >
+              {isLoading ? (
+                <Loader2 className="h-5 w-5 animate-spin" />
+              ) : (
+                <ArrowUp className="h-5 w-5" />
+              )}
+            </motion.button>
+          </div>
+        </div>
+        
+        <div className="flex items-center justify-center mt-2 gap-1 text-center">
+          <Lock className="h-3 w-3 text-happy-primary" />
+          <span className="text-xs text-happy-dark/70">End-to-end encrypted | </span>
+          <span className="text-xs text-happy-primary cursor-pointer hover:underline">Privacy Policy</span>
+        </div>
       </div>
     </div>
   );
