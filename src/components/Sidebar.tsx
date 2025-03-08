@@ -1,5 +1,5 @@
 
-import { Menu, Globe, ChevronDown, Key, Shield, Lock, Bell, Settings, HelpCircle, Fingerprint } from "lucide-react";
+import { Menu, Globe, ChevronDown, Key, Shield, Lock, Bell, Settings, HelpCircle, Fingerprint, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";

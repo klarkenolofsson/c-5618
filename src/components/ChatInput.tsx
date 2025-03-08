@@ -1,6 +1,5 @@
-
 import { useState } from "react";
-import { ArrowUp, Loader2, Mic, PaperClip, Lock, Image } from "lucide-react";
+import { ArrowUp, Loader2, Mic, Paperclip, Lock, Image } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface ChatInputProps {
@@ -50,7 +49,7 @@ const ChatInput = ({ onSend, isLoading = false }: ChatInputProps) => {
               whileTap={{ scale: 0.95 }}
               className="p-2 rounded-full hover:bg-happy-primary/10 text-happy-dark/70 transition-colors"
             >
-              <PaperClip className="h-5 w-5" />
+              <Paperclip className="h-5 w-5" />
             </motion.button>
             
             <motion.button 
